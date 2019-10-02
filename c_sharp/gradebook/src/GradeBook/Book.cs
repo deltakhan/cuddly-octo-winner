@@ -3,12 +3,14 @@ using System.Collections.Generic;
 
 namespace GradeBook
 {
+
+    public 
     public class Book
     {
         private List<double> grades;
         public string Name{
             get; 
-            private set;
+            set;
         }
         public const string CATEGORY = "Science";
 
@@ -40,6 +42,7 @@ namespace GradeBook
         public void AddGrade(double grade){
             if(grade <= 100 && grade >= 0){
                 grades.Add(grade);
+
             }
             else{
                 throw new ArgumentException($"Invalid {nameof(grade)}");
