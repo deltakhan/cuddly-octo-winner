@@ -7,7 +7,7 @@ namespace GradeBook.Test
     {
         //[Fact]
         public void CanNotAddBadGrades(){
-            var book = new Book("Book1");
+            var book = new InMemoryBook("Book1");
 
             book.AddGrade(-5);
             book.AddGrade(110);
@@ -18,13 +18,13 @@ namespace GradeBook.Test
 
             var result = book.GetStatistics();
 
-            Assert.Equal(2, result.Length);
+            Assert.Equal(2, result.Count);
         }
 
         [Fact]
         public void BookCalculatesAnAverageGrade(){
             // arrange
-            var book = new Book("");
+            var book = new InMemoryBook("");
             book.AddGrade(89.1);
             book.AddGrade(90.5);
             book.AddGrade(77.3);
@@ -39,7 +39,7 @@ namespace GradeBook.Test
         [Fact]
         public void BookCalculatesTheHighestGrade(){
             // arrange
-            var book = new Book("");
+            var book = new InMemoryBook("");
             book.AddGrade(89.1);
             book.AddGrade(90.5);
             book.AddGrade(77.3);
@@ -54,7 +54,7 @@ namespace GradeBook.Test
         [Fact]
         public void BookCalculatesTheLowestGrade(){
             // arrange
-            var book = new Book("");
+            var book = new InMemoryBook("");
             book.AddGrade(89.1);
             book.AddGrade(90.5);
             book.AddGrade(77.3);
@@ -69,7 +69,7 @@ namespace GradeBook.Test
         [Fact]
         public void findLetterGrade(){
             //Given
-            var book = new Book("");
+            var book = new InMemoryBook("");
             book.AddGrade(89.1);
             book.AddGrade(90.5);
             book.AddGrade(77.3);
