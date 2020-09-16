@@ -5,6 +5,16 @@ namespace ACM.BL
 {
     public class Customer
     {
+        public Customer()
+        {
+
+        }
+
+        public Customer(int customerId)
+        {
+            CustomerID = customerId;
+        }
+
         public int CustomerID { get; private set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
