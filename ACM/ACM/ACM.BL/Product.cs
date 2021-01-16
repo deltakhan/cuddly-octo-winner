@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Acme.Common;
 
 namespace ACM.BL
 {
-    public class Product : EntityBase
+    public class Product : EntityBase, ILoggable
     {
         public Product()
         {
@@ -16,9 +17,22 @@ namespace ACM.BL
         }
 
         public int ProductID { get; private set; }
-        public string ProductName { get; set; }
+        private string _productName;
         public string ProductDescription { get; set; }
         public decimal? CurrentPrice { get; set; }
+
+        public string ProductName
+        {
+            get
+            {
+                return _productName.InsertSpaces();
+            }
+
+            set
+            {
+                _productName = value;
+            }
+        }
 
         /// <summary>
         /// Validates Product Data
@@ -35,5 +49,6 @@ namespace ACM.BL
         }
 
         public override string ToString() => ProductName;
+        public string Log() => $"{ProductID}: {ProductID} Deatil: {ProductDescription} Status: {EntityState}";
     }
 }
