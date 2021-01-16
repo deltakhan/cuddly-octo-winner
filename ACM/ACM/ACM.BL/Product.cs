@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ACM.BL
 {
-    public class Product
+    public class Product : EntityBase
     {
         public Product()
         {
@@ -24,7 +24,7 @@ namespace ACM.BL
         /// Validates Product Data
         /// </summary>
         /// <returns></returns>
-        public bool Validate()
+        public override bool Validate()
         {
             var isValid = true;
 
@@ -33,5 +33,7 @@ namespace ACM.BL
 
             return isValid;
         }
+
+        public override string ToString() => ProductName;
     }
 }

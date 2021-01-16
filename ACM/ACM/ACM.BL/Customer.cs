@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace ACM.BL
 {
-    public class Customer
+    public class Customer : EntityBase
     {
-        public Customer()
+        public Customer(): this(0)
         {
 
         }
@@ -13,12 +13,15 @@ namespace ACM.BL
         public Customer(int customerId)
         {
             CustomerID = customerId;
+            AddressList = new List<Address>();
         }
 
         public int CustomerID { get; private set; }
+        public int CustomerType { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
+        public List<Address> AddressList { get; set; }
 
 
         public string FullName
@@ -43,7 +46,7 @@ namespace ACM.BL
         /// Validates the customer data.
         /// </summary>
         /// <returns></returns>
-        public bool Validate()
+        public override bool Validate()
         {
             var isValid = true;
 
@@ -52,5 +55,7 @@ namespace ACM.BL
 
             return isValid;
         }
+
+        public override string ToString() => $"{FirstName} {LastName}";
     }
 }

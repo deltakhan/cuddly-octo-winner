@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Linq;
+
 namespace ACM.BL
 {
     public class CustomerRespitory
     {
         public CustomerRespitory()
         {
+            addressRepository = new AddressRepository();
         }
+
+        private AddressRepository addressRepository { get; set; }
 
         /// <summary>
         /// Retrieve one customer
@@ -27,6 +32,7 @@ namespace ACM.BL
                 customer.EmailAddress = "fbaggins@hobbiton.me";
                 customer.FirstName = "Frodo";
                 customer.LastName = "Baggins";
+                customer.AddressList = addressRepository.RetrieveByCustomerId(customerid).ToList();
             }
             return customer;
         }
@@ -40,7 +46,27 @@ namespace ACM.BL
         {
             // Code that saves the passed customer
 
-            return true;
+            var success = true;
+
+            if (customer.HasChanges)
+            {
+                if (customer.IsValid)
+                {
+                    if (customer.IsNew)
+                    {
+                        // Call an insert Stored Procedure
+                    }
+                    else
+                    {
+                        // Call an Update Stored Proc
+                    }
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            return success;
         }
     }
 }
